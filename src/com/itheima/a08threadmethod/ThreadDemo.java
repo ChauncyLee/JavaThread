@@ -1,0 +1,31 @@
+package com.itheima.a08threadmethod;
+
+
+import com.itheima.a08threadmethod.MyThread;
+
+public class ThreadDemo {
+
+    public static void main(String[] args) throws InterruptedException {
+        /*
+        public final void join()：等待该线程终止。 插入线程/插队线程
+
+         */
+
+        MyThread t = new MyThread();
+
+        t.setName("土豆");
+
+        t.start();
+
+        // 表示把t这个线程，插入到当前线程中，当前线程为main线程
+        // t:土豆
+        // 当前线程：main
+        t.join();
+
+        // 执行在main线程当中的
+        for (int i = 0; i < 10; i++) {
+            System.out.println("main:"+i);
+        }
+
+    }
+}
