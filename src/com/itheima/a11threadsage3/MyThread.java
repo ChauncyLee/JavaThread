@@ -7,7 +7,7 @@ public class MyThread extends Thread {
 
     static int ticket = 0;
 
-    Lock lock = new ReentrantLock();
+    static Lock lock = new ReentrantLock();
 
     @Override
     public void run(){
