@@ -10,21 +10,23 @@ public class MyThread extends Thread {
     static Lock lock = new ReentrantLock();
 
     @Override
-    public void run(){
+    public void run() {
         while (true) {
             lock.lock();
-                if(ticket < 100) {
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+
+            try {
+                if (ticket < 100) {
+                    Thread.sleep(100);
                     System.out.println(Thread.currentThread().getName() + "正在卖第" + ticket + "张票");
                     ticket++;
                 } else {
                     break;
                 }
-            lock.unlock();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            } finally {
+                lock.unlock();
+            }
         }
     }
 }
