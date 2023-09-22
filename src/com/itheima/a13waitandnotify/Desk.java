@@ -9,7 +9,7 @@ public class Desk {
     // 是否有面条 0：没有 1：有
     public static int foodFlag = 0;
 
-    // 面条的数量
+    // 面条的数量即要执行的次数
     public static int count = 10;
 
     // 锁对象
